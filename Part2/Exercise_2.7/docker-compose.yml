@@ -1,0 +1,26 @@
+version: "3.8"
+services: 
+  back-end:
+    ports:
+      - 8080:8080
+    build: ./back
+    environment:
+      - REDIS_HOST=cache
+      - POSTGRES_HOST=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DATABASE=postgres
+  front-end:
+    ports:
+      - 5000:5000
+    build: ./front
+  db: 
+    image: postgres:15.7
+    environment:
+      - POSTGRES_PASSWORD=pass
+    volumes:
+      - ./database:/var/lib/postgresql/data
+  cache: 
+     image: redis:7.2.5
+
+     

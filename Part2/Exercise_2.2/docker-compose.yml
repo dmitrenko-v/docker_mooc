@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  web_service:
+    image: devopsdockeruh/simple-web-service
+    command: bash -c "server"
+    ports:
+      - 8080:8080
+    
+
